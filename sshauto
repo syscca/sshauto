@@ -1,22 +1,21 @@
 
-Windows端下载https://git-scm.com/
+# Windows端下载https://git-scm.com/
 
-右击桌面git bash here
+# 右击桌面git bash here
 
-如需生成密钥执行
+# 如需生成密钥执行
 
-ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+＃　ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
 
-再上传到服务器
+＃　再上传到服务器
 
-cat ~/.ssh/id_rsa.pub | ssh -o StrictHostKeyChecking=no root@服务器IP -p 端口 "mkdir -p ~/.ssh &&\
-
+echo "输入服务器IP: "
+read ipname
+echo "输入SSH端口 : "
+read ipprot
+cat ~/.ssh/id_rsa.pub | ssh -o StrictHostKeyChecking=no root@${ipname} -p ${ipprot} "mkdir -p ~/.ssh &&\
  touch ~/.ssh/authorized_keys\
- 
  && chmod -R go= ~/.ssh\
- 
  && cat >> ~/.ssh/authorized_keys\
- 
  && sed -i 's/^#\?\(PasswordAuthentication\s*\).*$/\1no/' /etc/ssh/sshd_config\
- 
  && systemctl restart ssh"
