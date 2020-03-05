@@ -19,3 +19,5 @@ cat ~/.ssh/id_rsa.pub | ssh -o StrictHostKeyChecking=no root@${ipname} -p ${ippr
  && cat >> ~/.ssh/authorized_keys\
  && sed -i 's/^#\?\(PasswordAuthentication\s*\).*$/\1no/' /etc/ssh/sshd_config\
  && systemctl restart ssh"
+echo "上传公钥成功并关闭密码登录，请关闭窗口"
+read -n 1
