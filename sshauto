@@ -1,13 +1,15 @@
 
 # Windows端下载https://git-scm.com/
+# 保存脚本为sh后缀
 
-# 右击桌面git bash here
-
-# 如需生成密钥执行
-
-＃　ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
-
-＃　再上传到服务器
+echo -n "是否生成密钥 (y/n)? "
+read keyyn
+if [ "$keyyn" != "${keyyn#[Yy]}" ] ;then
+	echo "正在生成密钥"
+    ssh-keygen -t rsa -f ~/.ssh/id_rsa -q -N ""
+else
+    echo "不生成密钥"
+fi
 
 echo "输入服务器IP: "
 read ipname
